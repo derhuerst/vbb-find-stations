@@ -8,5 +8,10 @@
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/vbb-find-stations",
 	"repository":   "git://github.com/derhuerst/vbb-find-stations.git",
-	"license":      "ISC"
+	"license":      "ISC",
+	"dependencies": {
+		"vbb-tokenize-station": "^0.1.1",
+		"ndjson":               "^1.4.3",
+		"stream-filter":        "^1"
+	}
 }
