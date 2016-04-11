@@ -1,0 +1,12 @@
+{
+	"name":         "vbb-find-stations",
+	"description":  "Search for stations of VBB.",
+	"version":      "0.1.0",
+	"main":         "index.js",
+	"files":        ["index.js", "stations.json"],
+	"keywords":     ["vbb", "stations", "search", "berlin", "public transport", "open data"],
+	"author":       "Jannis R <mail@jannisr.de>",
+	"homepage":     "https://github.com/derhuerst/vbb-find-stations",
+	"repository":   "git://github.com/derhuerst/vbb-find-stations.git",
+	"license":      "ISC"
+}
