@@ -23,10 +23,13 @@ npm install vbb-find-stations
 ```javascript
 const findStations = require('vbb-find-stations')
 findStations('Seestr')
-.on('data', console.log)
-// {id: 9009103, name: 'U Seestr. (Berlin)'},
-// {id: 9009105, name: 'Seestr./Amrumer Str. (Berlin)'},
-// {id: 9019103, name: 'Seestr./Beusselstr. (Berlin)'}
+.on('data', (s) => console.log(s.id, s.name))
+// 9062202 'S+U Rathaus Steglitz (Berlin)'
+// 9062281 'S Rathaus Steglitz (Berlin)'
+// 9062282 'S+U Rathaus Steglitz/Kreisel (Berlin)'
+// 9062781 'S+U Rathaus Steglitz (Berlin) [U9]'
+// 9062782 'S+U Rathaus Steglitz (Berlin) [Bus Schloßstr.]'
+// 9062784 'S+U Rathaus Steglitz (Berlin) [Bus Albrechtstr.]'
 ```
 
 
