@@ -13,5 +13,15 @@
 		"vbb-tokenize-station": "^0.1.1",
 		"ndjson":               "^1.4.3",
 		"stream-filter":        "^1"
+	},
+	"devDependencies": {
+		"vbb-stations":         "^0.3",
+		"vbb-tokenize-station": "^0.1.1",
+		"through2-map":         "^2",
+		"ndjson":               "^1.4.3"
+	},
+	"scripts": {
+		"prepublish":    "npm run build",
+		"build":         "node ./build.js"
 	}
 }
