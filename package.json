@@ -1,7 +1,7 @@
 {
 	"name":         "vbb-find-stations",
 	"description":  "Search for stations of VBB.",
-	"version":      "0.2.0",
+	"version":      "0.2.1",
 	"main":         "index.js",
 	"files":        ["index.js", "stations.ndjson"],
 	"keywords":     ["vbb", "stations", "search", "berlin", "public transport", "open data"],
