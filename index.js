@@ -17,20 +17,26 @@ const file = path.join(__dirname, 'stations.ndjson')
 
 
 
-const autocomplete = function (query) {
+const match = (query) => {
+	const fragments = tokenize(query)
+	if (fragments.length === 0) return () => false
+	return (station) => {
+		for (let fragment of fragments) {
+			if (station.tokens.indexOf(fragment) < 0)
+				return false
+		}
+		return true
+	}
+}
+
+const find = function (query) {
 	const results = []
 	const fragments = tokenize(query)
 	if (fragments.length === 0) return []
 
 	return fs.createReadStream(file)
 	.pipe(ndjson.parse())
-	.pipe(filter((station) => {
-		for (let fragment of fragments) {
-			if (station.tokens.indexOf(fragment) < 0)
-				return false
-		}
-		return true
-	}))
+	.pipe(filter(match(query)))
 }
 
-module.exports = autocomplete
+module.exports = Object.assign(find, {match})
