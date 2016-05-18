@@ -24,14 +24,17 @@ const match = (fragments) => {
 	return (station) => {
 		let result = true
 		for (let fragment of fragments) {
-			if (station.tokens.indexOf(fragment) < 0) result = false
+			if (station.tokens.indexOf(fragment) < 0) {
+				result = false
+				break
+			}
 		}
 		if (leven(joined, station.tokens.join(' ')) < 3) result = true
 		return result
 	}
 }
 
-const find = function (query) {
+const find = (query) => {
 	const results = []
 	const fragments = tokenize(query)
 	if (fragments.length === 0) return []
