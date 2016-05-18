@@ -12,7 +12,8 @@
 	"dependencies": {
 		"vbb-tokenize-station": "^0.1.1",
 		"ndjson":               "^1.4.3",
-		"stream-filter":        "^1"
+		"stream-filter":        "^1",
+		"leven":                "^2"
 	},
 	"devDependencies": {
 		"vbb-stations":         "^0.3",

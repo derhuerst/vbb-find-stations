@@ -2,6 +2,7 @@
 
 const path     = require('path')
 const tokenize = require('vbb-tokenize-station')
+const leven    = require('leven')
 const fs       = require('fs')
 const ndjson   = require('ndjson')
 const filter   = require('stream-filter')
@@ -17,15 +18,16 @@ const file = path.join(__dirname, 'stations.ndjson')
 
 
 
-const match = (query) => {
-	const fragments = tokenize(query)
+const match = (fragments) => {
 	if (fragments.length === 0) return () => false
+	const joined = fragments.join(' ')
 	return (station) => {
+		let result = true
 		for (let fragment of fragments) {
-			if (station.tokens.indexOf(fragment) < 0)
-				return false
+			if (station.tokens.indexOf(fragment) < 0) result = false
 		}
-		return true
+		if (leven(joined, station.tokens.join(' ')) < 3) result = true
+		return result
 	}
 }
 
@@ -36,7 +38,7 @@ const find = function (query) {
 
 	return fs.createReadStream(file)
 	.pipe(ndjson.parse())
-	.pipe(filter(match(query)))
+	.pipe(filter(match(fragments)))
 }
 
 module.exports = Object.assign(find, {match})
