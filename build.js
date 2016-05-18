@@ -1,15 +1,14 @@
 'use strict'
 
-const path     = require('path')
+const through  = require('through2')
 const stations = require('vbb-stations')
 const tokenize = require('vbb-tokenize-station')
-const fs       = require('fs')
+const common   = require('vbb-common-places').stations
 const map      = require('through2-map')
+const merge    = require('merge-stream')
 const ndjson   = require('ndjson')
-const through  = require('through2')
-const common   = require('vbb-common-places')
-
-
+const fs       = require('fs')
+const path     = require('path')
 
 const showError = (err) => {
 	if (!err) return
@@ -17,38 +16,33 @@ const showError = (err) => {
 	process.exit(1)
 }
 
-const file = path.join(__dirname, 'stations.ndjson')
 
 
+// vbb-common-places
+const a = through.obj(function (alias, _, cb) {
+	const self = this
+	stations(alias.id).on('error', cb)
+	.on('data', (station) => self.push({
+		  id:     station.id
+		, name:   station.name
+		, tokens: tokenize(alias.name)
+	}))
+	.on('end', () => cb())
+}).on('error', showError)
+for (let name in common) {a.write({name, id: common[name]})}
+a.end()
 
-console.info('Creating a search index from vbb-stations.')
-
-stations('all').on('error', showError)
+// vbb-stations
+const b = stations('all').on('error', showError)
 .pipe(map({objectMode: true}, (station) => ({
 	  id:     station.id
 	, name:   station.name
 	, tokens: tokenize(station.name)
 })))
+
+
+
+merge(a, b)
 .pipe(ndjson.stringify())
-.pipe(fs.createWriteStream(file))
-.on('finish', () => {
-	console.info('Done.')
-
-	console.info('Adding stations from vbb-common-places.')
-	const digest = through.obj(function (alias, _, cb) {
-		const self = this
-		stations(alias.id).on('error', cb)
-		.on('data', (station) => self.push({
-			  id:     station.id
-			, name:   station.name
-			, tokens: tokenize(alias.name)
-		}))
-		.on('end', () => cb())
-	})
-	digest.pipe(ndjson.stringify())
-	.pipe(fs.createWriteStream(file, {flags: 'a'}))
-	.on('finish', () => console.info('Done.'))
-
-	for (let name in common) {digest.write({name, id: common[name]})}
-	digest.end()
-})
+.pipe(fs.createWriteStream(path.join(__dirname, 'stations.ndjson')))
+.on('finish', () => console.log('done'))
