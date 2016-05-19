@@ -2,12 +2,12 @@
 
 const fs       = require('fs')
 const path     = require('path')
-const ndjson   = require('ndjson')
-const stream   = require('stream')
 const filter   = require('stream-filter')
 const through  = require('through2')
 const leven    = require('leven')
 const tokenize = require('vbb-tokenize-station')
+const ndjson   = require('ndjson')
+const stream   = require('stream')
 
 
 
@@ -28,16 +28,20 @@ const fuzzy = (query) => through.obj(function (station, _, cb) {
 	for (let fragment of query) {
 
 		let i = tokens.indexOf(fragment) // try exact matching
-		if (i < 0) { // try fuzzy matching
-			let distance = 3
-			for (let j = 0; j < tokens.length; j++) {
-				const d = leven(tokens[j], fragment)
-				if (d < distance) {distance = d; i = j}
-			}
+		if (i >= 0) {relevance += 1; tokens.splice(i, 1); continue}
+
+		let distance = 3
+		for (let j = 0; j < tokens.length; j++) {
+			const d = leven(tokens[j], fragment)
+			if (d < distance) {distance = d; i = j}
+		}
+		if (i >= 0) {
+			relevance += 1 / (distance + 1)
+			tokens.splice(i, 1)
+			continue
 		}
 
-		if (i >= 0) {relevance += 1; tokens.splice(i, 1)}
-		else return cb() // fragment not found in tokens
+		return cb() // fragment not found in tokens
 	}
 	station = Object.create(station)
 	station.relevance = relevance
