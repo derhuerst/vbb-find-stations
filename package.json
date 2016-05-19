@@ -10,22 +10,24 @@
 	"repository":   "git://github.com/derhuerst/vbb-find-stations.git",
 	"license":      "ISC",
 	"dependencies": {
-		"vbb-tokenize-station": "^0.1.1",
-		"ndjson":               "^1.4.3",
-		"stream-filter":        "^1",
-		"leven":                "^2"
+		"stream-filter": "^1",
+		"through2": "^2.0.1",
+		"leven": "^2",
+		"vbb-tokenize-station": "^0.1.5",
+		"ndjson": "^1.4.3"
 	},
 	"devDependencies": {
-		"vbb-stations":         "^0.3",
-		"vbb-tokenize-station": "^0.1.1",
-		"through2-map":         "^2",
-		"ndjson":               "^1.4.3",
-		"through2":             "^2.0.1",
-		"vbb-common-places":    "^0.1"
+		"vbb-stations": "^0.3",
+		"vbb-common-places": "^0.2",
+		"through2-map": "^2",
+		"merge-stream": "^1",
+		"blue-tape": "^0.2",
+		"so": "^1.0.1",
+		"tap-min": "^1.1"
 	},
 	"scripts": {
-		"build":         "node ./build.js",
-		"test":          "node ./test.js",
-		"prepublish":    "npm run build && npm test"
+		"build":      "node build.js",
+		"test":       "tape test.js | tap-min",
+		"prepublish": "npm run build; npm test"
 	}
 }
