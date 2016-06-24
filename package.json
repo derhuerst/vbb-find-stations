@@ -13,11 +13,11 @@
 		"stream-filter": "^1",
 		"through2": "^2.0.1",
 		"leven": "^2",
-		"vbb-tokenize-station": "^0.1.5",
+		"vbb-tokenize-station": "^0.2.0",
 		"ndjson": "^1.4.3"
 	},
 	"devDependencies": {
-		"vbb-stations": "^0.3",
+		"vbb-stations": "^1",
 		"vbb-common-places": "^0.2",
 		"through2-map": "^2",
 		"merge-stream": "^1",
