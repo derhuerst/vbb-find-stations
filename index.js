@@ -24,7 +24,7 @@ const exact = (query) => filter((station) => {
 
 const fuzzy = (query) => through.obj(function (station, _, cb) {
 	const tokens = Array.from(station.tokens)
-	let relevance = 0
+	let relevance = .5 / station.name.length
 	for (let fragment of query) {
 
 		let i = tokens.indexOf(fragment) // try exact matching
