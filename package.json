@@ -17,10 +17,8 @@
 		"ndjson": "^1.4.3"
 	},
 	"devDependencies": {
-		"vbb-stations": "^2.1",
 		"vbb-common-places": "^0.4",
-		"through2-map": "^2",
-		"merge-stream": "^1",
+		"vbb-stations": "^2.1",
 		"blue-tape": "^0.2",
 		"so": "^1.0.1",
 		"tap-min": "^1.1"
