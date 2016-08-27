@@ -18,25 +18,25 @@ const sink = (stream, input) => new Promise((yay, nay) => {
 
 test('exact: more fragments than tokens', so(function* (t) {
 	const s = find.exact(['foo', 'bar'])
-	const i = {tokens: ['foo']}
+	const i = {name: 'Foo', tokens: ['foo']}
 	t.deepEqual(yield sink(s, i), [])
 }))
 
 test('exact: typo', so(function* (t) {
 	const s = find.exact(['foo', 'bar'])
-	const i = {tokens: ['foo', 'baz']}
+	const i = {name: 'Foo (Baz)', tokens: ['foo', 'baz']}
 	t.deepEqual(yield sink(s, i), [])
 }))
 
 test('exact: less fragments than tokens', so(function* (t) {
 	const s = find.exact(['foo'])
-	const i = {tokens: ['foo', 'bar']}
+	const i = {name: 'Foo (Bar)', tokens: ['foo', 'bar']}
 	t.deepEqual(yield sink(s, i), [i])
 }))
 
 test('exact: as many fragments as tokens', so(function* (t) {
 	const s = find.exact(['foo', 'bar'])
-	const i = {tokens: ['foo', 'bar']}
+	const i = {name: 'Foo (Bar)', tokens: ['foo', 'bar']}
 	t.deepEqual(yield sink(s, i), [i])
 }))
 
@@ -44,35 +44,35 @@ test('exact: as many fragments as tokens', so(function* (t) {
 
 test('fuzzy: 1 fragment, 1 token, distance of 3', so(function* (t) {
 	const s = find.fuzzy(['bar'])
-	const i = {tokens: ['foo']}
+	const i = {name: 'Foo', tokens: ['foo']}
 	t.deepEqual(yield sink(s, i), [])
 }))
 
 test('fuzzy: 1 fragment, 1 token, distance of 2', so(function* (t) {
 	const s = find.fuzzy(['bar'])
-	const i = {tokens: ['buz']}
+	const i = {name: 'Buz', tokens: ['buz']}
 	const r = yield sink(s, i)
 	t.equal(r.length, 1)
 	t.deepEqual(r[0].__proto__, i)
-	t.equal(r[0].relevance, 1/3)
+	t.equal(r[0].relevance, 1/3 + .5/'Buz'.length)
 }))
 
 test('fuzzy: 1 fragment, 1 token, distance of 1', so(function* (t) {
 	const s = find.fuzzy(['bar'])
-	const i = {tokens: ['baz']}
+	const i = {name: 'Baz', tokens: ['baz']}
 	const r = yield sink(s, i)
 	t.equal(r.length, 1)
 	t.deepEqual(r[0].__proto__, i)
-	t.equal(r[0].relevance, 1/2)
+	t.equal(r[0].relevance, 1/2 + .5/'Baz'.length)
 }))
 
 test('fuzzy: 1 fragment, 1 token, distance of 0', so(function* (t) {
 	const s = find.fuzzy(['foo'])
-	const i = {tokens: ['foo']}
+	const i = {name: 'Foo', tokens: ['foo']}
 	const r = yield sink(s, i)
 	t.equal(r.length, 1)
 	t.deepEqual(r[0].__proto__, i)
-	t.equal(r[0].relevance, 1)
+	t.equal(r[0].relevance, 1 + .5/'Foo'.length)
 }))
 
 
