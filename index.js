@@ -11,7 +11,7 @@ const stream   = require('stream')
 
 
 
-const exact = (query) => filter((station) => {
+const exact = (query) => filter.obj((station) => {
 	const tokens = Array.from(station.tokens)
 	for (let fragment of query) {
 		const i = tokens.indexOf(fragment)

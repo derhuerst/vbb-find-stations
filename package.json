@@ -10,7 +10,7 @@
 	"repository":   "git://github.com/derhuerst/vbb-find-stations.git",
 	"license":      "ISC",
 	"dependencies": {
-		"stream-filter": "^1",
+		"stream-filter": "^2.1",
 		"through2": "^2.0.1",
 		"leven": "^2",
 		"vbb-tokenize-station": "^0.2.0",
