@@ -21,7 +21,7 @@
 		"vbb-stations": "^2.1",
 		"blue-tape": "^1.0.0",
 		"so": "^1.0.1",
-		"tap-min": "^1.1"
+		"tap-min": "derhuerst/tap-min"
 	},
 	"scripts": {
 		"build":      "node build.js",
