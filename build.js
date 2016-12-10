@@ -4,7 +4,7 @@ const ndjson   = require('ndjson')
 const fs       = require('fs')
 const path     = require('path')
 const common   = require('vbb-common-places').stations
-const stations = require('vbb-stations')
+const stations = require('vbb-stations/full.json')
 const tokenize = require('vbb-tokenize-station')
 
 const showError = (err) => {
@@ -20,7 +20,11 @@ out.pipe(fs.createWriteStream(path.join(__dirname, 'stations.ndjson')))
 .on('error', showError).on('finish', () => console.log('done'))
 
 for (let name in common) {
-	const station = stations(common[name])[0]
+	const station = stations[common[name]]
+	if (!station) {
+		console.error('Unknown station', common[name])
+		continue
+	}
 	out.write({
 		  id:     station.id
 		, name:   station.name
@@ -28,9 +32,15 @@ for (let name in common) {
 	})
 }
 
-for (let station of stations('all'))
+for (let id in stations) {
+	const station = stations[id]
+	if (!station) {
+		console.error('Unknown station', id)
+		continue
+	}
 	out.write({
 		  id:     station.id
 		, name:   station.name
 		, tokens: tokenize(station.name)
 	})
+}

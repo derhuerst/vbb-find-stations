@@ -82,7 +82,6 @@ test('find', (t) => {
 
 	find('U Alt-Mareindorf (Berlin)', find.fuzzy) // typo
 	.on('data', (s) => {
-		if (s.id === 9070301)
-		t.pass('match')
+		if (s.id === '900000070301') t.pass('match')
 	})
 })
