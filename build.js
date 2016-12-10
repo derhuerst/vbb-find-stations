@@ -44,3 +44,5 @@ for (let id in stations) {
 		, tokens: tokenize(station.name)
 	})
 }
+
+out.end()

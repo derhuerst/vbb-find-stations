@@ -1,7 +1,7 @@
 {
 	"name":         "vbb-find-stations",
 	"description":  "Search for stations of VBB.",
-	"version":      "1.0.1",
+	"version":      "1.1.0",
 	"main":         "index.js",
 	"files":        ["index.js", "stations.ndjson"],
 	"keywords":     ["vbb", "stations", "search", "berlin", "public transport", "open data"],
@@ -9,6 +9,7 @@
 	"homepage":     "https://github.com/derhuerst/vbb-find-stations",
 	"repository":   "git://github.com/derhuerst/vbb-find-stations.git",
 	"license":      "ISC",
+	"engines":      {"node": ">=6"},
 	"dependencies": {
 		"stream-filter": "^2.1",
 		"through2": "^2.0.1",
