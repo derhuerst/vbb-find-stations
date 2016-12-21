@@ -19,16 +19,16 @@ const out = ndjson.stringify()
 out.pipe(fs.createWriteStream(path.join(__dirname, 'stations.ndjson')))
 .on('error', showError).on('finish', () => console.log('done'))
 
-for (let name in common) {
-	const station = stations[common[name]]
+for (let alias in common) {
+	const station = stations[common[alias]]
 	if (!station) {
-		console.error('Unknown station', common[name])
+		console.error('Unknown station', common[alias])
 		continue
 	}
 	out.write({
 		  id:     station.id
 		, name:   station.name
-		, tokens: tokenize(name)
+		, tokens: tokenize(alias)
 	})
 }
 
