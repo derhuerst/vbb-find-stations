@@ -23,14 +23,21 @@ npm install vbb-find-stations
 
 ```javascript
 const findStations = require('vbb-find-stations')
-findStations('Seestr')
+```
+
+This module accepts a filter function (that filters all stations by the first argument) as the second argument. `findStations.exact` and `findStations.fuzzy` are included, with `findStations.exact` being the default one.
+
+```javascript
+findStations('U Steglitz')
 .on('data', (s) => console.log(s.id, s.name))
-// 9062202 'S+U Rathaus Steglitz (Berlin)'
-// 9062281 'S Rathaus Steglitz (Berlin)'
-// 9062282 'S+U Rathaus Steglitz/Kreisel (Berlin)'
-// 9062781 'S+U Rathaus Steglitz (Berlin) [U9]'
-// 9062782 'S+U Rathaus Steglitz (Berlin) [Bus Schloßstr.]'
-// 9062784 'S+U Rathaus Steglitz (Berlin) [Bus Albrechtstr.]'
+```
+
+```
+900000062202 S+U Rathaus Steglitz (Berlin)
+900000062282 S+U Rathaus Steglitz/Kreisel (Berlin)
+900000062781 S+U Rathaus Steglitz (Berlin) [U9]
+900000062782 S+U Rathaus Steglitz (Berlin) [Bus Schloßstr.]
+900000062784 S+U Rathaus Steglitz (Berlin) [Bus Albrechtstr.]
 ```
 
 

@@ -51,7 +51,7 @@ const fuzzy = (query) => through.obj(function (station, _, cb) {
 
 
 
-const find = (query, filter) => {
+const find = (query, filter = exact) => {
 	query = tokenize(query)
 	if (query.length === 0) return empty()
 	return fs.createReadStream(path.join(__dirname, 'stations.ndjson'))
