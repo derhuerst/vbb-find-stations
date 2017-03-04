@@ -2,7 +2,7 @@
 
 const test = require('blue-tape')
 const so   = require('so')
-const find = require('./index')
+const find = require('.')
 
 const sink = (stream, input) => new Promise((yay, nay) => {
 	const data = []
@@ -53,7 +53,8 @@ test('fuzzy: 1 fragment, 1 token, distance of 2', so(function* (t) {
 	const i = {name: 'Buz', tokens: ['buz']}
 	const r = yield sink(s, i)
 	t.equal(r.length, 1)
-	t.deepEqual(r[0].__proto__, i)
+	t.equal(r[0].name, i.name)
+	t.equal(r[0].tokens, i.tokens)
 	t.equal(r[0].relevance, 1/3 + .5/'Buz'.length)
 }))
 
@@ -62,7 +63,8 @@ test('fuzzy: 1 fragment, 1 token, distance of 1', so(function* (t) {
 	const i = {name: 'Baz', tokens: ['baz']}
 	const r = yield sink(s, i)
 	t.equal(r.length, 1)
-	t.deepEqual(r[0].__proto__, i)
+	t.equal(r[0].name, i.name)
+	t.equal(r[0].tokens, i.tokens)
 	t.equal(r[0].relevance, 1/2 + .5/'Baz'.length)
 }))
 
@@ -71,7 +73,8 @@ test('fuzzy: 1 fragment, 1 token, distance of 0', so(function* (t) {
 	const i = {name: 'Foo', tokens: ['foo']}
 	const r = yield sink(s, i)
 	t.equal(r.length, 1)
-	t.deepEqual(r[0].__proto__, i)
+	t.equal(r[0].name, i.name)
+	t.equal(r[0].tokens, i.tokens)
 	t.equal(r[0].relevance, 1 + .5/'Foo'.length)
 }))
 

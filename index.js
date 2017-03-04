@@ -43,8 +43,7 @@ const fuzzy = (query) => through.obj(function (station, _, cb) {
 
 		return cb() // fragment not found in tokens
 	}
-	station = Object.create(station)
-	station.relevance = relevance
+	station = Object.assign({relevance}, station)
 	this.push(station)
 	cb()
 })
