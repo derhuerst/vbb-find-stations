@@ -1,7 +1,7 @@
 {
 	"name":         "vbb-find-stations",
 	"description":  "Search for stations of VBB.",
-	"version":      "1.4.0",
+	"version":      "1.5.0",
 	"main":         "index.js",
 	"files":        ["index.js", "stations.ndjson"],
 	"keywords":     ["vbb", "stations", "search", "berlin", "public transport", "open data"],
@@ -19,7 +19,7 @@
 	},
 	"devDependencies": {
 		"vbb-common-places": "^1.1.0",
-		"vbb-stations": "^3.3.0",
+		"vbb-stations": "^4.0.0",
 		"blue-tape": "^1.0.0",
 		"so": "^1.0.1",
 		"tap-min": "^1.2.1"
