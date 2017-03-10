@@ -83,7 +83,7 @@ test('fuzzy: 1 fragment, 1 token, distance of 0', so(function* (t) {
 test('find', (t) => {
 	t.plan(1)
 
-	find('U Alt-Mareindorf (Berlin)', find.fuzzy) // typo
+	find('U Alt-Mareindorf (Berlin)', find.fuzzy) // note the typo
 	.on('data', (s) => {
 		if (s.id === '900000070301') t.pass('match')
 	})
