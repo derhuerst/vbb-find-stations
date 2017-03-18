@@ -11,13 +11,19 @@ const stream   = require('stream')
 
 
 
-const exact = (query) => filter.obj((station) => {
+const exact = (query) => through.obj(function (station, _, cb) {
 	const tokens = Array.from(station.tokens)
 	for (let fragment of query) {
 		const i = tokens.indexOf(fragment)
-		if (i < 0) {tokens.splice(i, 1); return false}
+		if (i < 0) {
+			tokens.splice(i, 1)
+			return cb()
+		}
 	}
-	return true
+
+	station = Object.assign({type: 'station'}, station)
+	this.push(station)
+	cb()
 })
 
 
@@ -43,7 +49,7 @@ const fuzzy = (query) => through.obj(function (station, _, cb) {
 
 		return cb() // fragment not found in tokens
 	}
-	station = Object.assign({relevance}, station)
+	station = Object.assign({type: 'station', relevance}, station)
 	this.push(station)
 	cb()
 })

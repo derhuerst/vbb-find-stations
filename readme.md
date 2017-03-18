@@ -29,15 +29,42 @@ This module accepts a filter function (that filters all stations by the first ar
 
 ```javascript
 findStations('U Steglitz')
-.on('data', (s) => console.log(s.id, s.name))
+.on('data', console.log)
 ```
 
-```
-900000062202 S+U Rathaus Steglitz (Berlin)
-900000062282 S+U Rathaus Steglitz/Kreisel (Berlin)
-900000062781 S+U Rathaus Steglitz (Berlin) [U9]
-900000062782 S+U Rathaus Steglitz (Berlin) [Bus Schloßstr.]
-900000062784 S+U Rathaus Steglitz (Berlin) [Bus Albrechtstr.]
+The stream emits stations in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format).
+
+```js
+{
+	type: 'station',
+	id: '900000062202',
+	name: 'S+U Rathaus Steglitz (Berlin)',
+	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin']
+}
+{
+	type: 'station',
+	id: '900000062282',
+	name: 'S+U Rathaus Steglitz/Kreisel (Berlin)',
+	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'kreisel', 'berlin']
+}
+{
+	type: 'station',
+	id: '900000062781',
+	name: 'S+U Rathaus Steglitz (Berlin) [U9]',
+	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin', 'u9']
+}
+{
+	type: 'station',
+	id: '900000062782',
+	name: 'S+U Rathaus Steglitz (Berlin) [Bus Schloßstr.]',
+	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin', 'bus', 'schloss', 'strasse']
+}
+{
+	type: 'station',
+	id: '900000062784',
+	name: 'S+U Rathaus Steglitz (Berlin) [Bus Albrechtstr.]',
+	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin', 'bus', 'albrecht', 'strasse']
+}
 ```
 
 
