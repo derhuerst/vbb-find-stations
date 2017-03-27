@@ -14,7 +14,7 @@
 		"stream-filter": "^2.1",
 		"through2": "^2.0.1",
 		"leven": "^2.1.0",
-		"vbb-tokenize-station": "^0.2.1",
+		"vbb-tokenize-station": "^0.3.0",
 		"ndjson": "^1.4.3"
 	},
 	"devDependencies": {
