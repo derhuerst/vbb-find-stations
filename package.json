@@ -1,9 +1,9 @@
 {
 	"name":         "vbb-find-stations",
 	"description":  "Search for stations of VBB.",
-	"version":      "1.7.0",
+	"version":      "2.0.0",
 	"main":         "index.js",
-	"files":        ["index.js", "stations.ndjson"],
+	"files":        ["index.js"],
 	"keywords":     ["vbb", "stations", "search", "berlin", "public transport", "open data"],
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/vbb-find-stations",
@@ -11,22 +11,14 @@
 	"license":      "ISC",
 	"engines":      {"node": ">=6"},
 	"dependencies": {
-		"stream-filter": "^2.1",
-		"through2": "^2.0.1",
-		"leven": "^2.1.0",
-		"vbb-tokenize-station": "^0.3.0",
-		"ndjson": "^1.4.3"
+		"vbb-stations-autocomplete": "^2.1.0"
 	},
 	"devDependencies": {
-		"vbb-common-places": "^1.1.0",
-		"vbb-stations": "^5.1.0",
-		"blue-tape": "^1.0.0",
-		"so": "^1.0.1",
+		"tape": "^4.6.3",
 		"tap-min": "^1.2.1"
 	},
 	"scripts": {
-		"build":      "node build.js",
 		"test":       "tape test.js | tap-min",
-		"prepublish": "npm run build; npm test"
+		"prepublish": "npm test"
 	}
 }
