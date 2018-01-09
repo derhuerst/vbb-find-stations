@@ -30,38 +30,73 @@ findStations('U Steglitz')
 .on('data', console.log)
 ```
 
-The stream emits stations in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format).
+The stream emits [*Friendly Public Transport Format* 1.0.1](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md) `station`s.
 
 ```js
 {
 	type: 'station',
 	id: '900000062202',
 	name: 'S+U Rathaus Steglitz (Berlin)',
-	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin']
-}
-{
-	type: 'station',
-	id: '900000062282',
-	name: 'S+U Rathaus Steglitz/Kreisel (Berlin)',
-	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'kreisel', 'berlin']
+	location: {
+		type: 'location',
+		latitude: 52.455066,
+		longitude: 13.322152
+	},
+	weight: 2736,
+	relevance: 3.1185246962418125,
+	score: 43.61687553989209
 }
 {
 	type: 'station',
 	id: '900000062781',
 	name: 'S+U Rathaus Steglitz (Berlin) [U9]',
-	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin', 'u9']
+	location: {
+		type: 'location',
+		latitude: 52.456438,
+		longitude: 13.319986
+	},
+	weight: 2831.5,
+	relevance: 2.4948197569934503,
+	score: 35.294851852317365
 }
 {
 	type: 'station',
 	id: '900000062782',
 	name: 'S+U Rathaus Steglitz (Berlin) [Bus Schloßstr.]',
-	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin', 'bus', 'schloss', 'strasse']
+	location: {
+		type: 'location',
+		latitude: 52.456755,
+		longitude: 13.320584
+	},
+	weight: 4831.25,
+	relevance: 2.0790164641612083,
+	score: 35.14615060514675
+}
+{
+	type: 'station',
+	id: '900000062282',
+	name: 'S+U Rathaus Steglitz/Kreisel (Berlin)',
+	location: {
+		type: 'location',
+		latitude: 52.455889,
+		longitude: 13.320852
+	},
+	weight: 2563.75,
+	relevance: 2.4948197569934503,
+	score: 34.14531045766747
 }
 {
 	type: 'station',
 	id: '900000062784',
 	name: 'S+U Rathaus Steglitz (Berlin) [Bus Albrechtstr.]',
-	tokens: ['sbahn', 'ubahn', 'rathaus', 'steglitz', 'berlin', 'bus', 'albrecht', 'strasse']
+	location: {
+		type: 'location',
+		latitude: 52.45668,
+		longitude: 13.321685
+	},
+	weight: 2834,
+	relevance: 2.0790164641612083,
+	score: 29.421030297346405
 }
 ```
 

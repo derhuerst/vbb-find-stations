@@ -1,24 +1,36 @@
 {
-	"name":         "vbb-find-stations",
-	"description":  "Search for stations of VBB.",
-	"version":      "2.0.0",
-	"main":         "index.js",
-	"files":        ["index.js"],
-	"keywords":     ["vbb", "stations", "search", "berlin", "public transport", "open data"],
-	"author":       "Jannis R <mail@jannisr.de>",
-	"homepage":     "https://github.com/derhuerst/vbb-find-stations",
-	"repository":   "git://github.com/derhuerst/vbb-find-stations.git",
-	"license":      "ISC",
-	"engines":      {"node": ">=6"},
+	"name": "vbb-find-stations",
+	"description": "Search for stations of VBB.",
+	"version": "2.0.0",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"vbb",
+		"stations",
+		"search",
+		"berlin",
+		"public transport",
+		"open data"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/vbb-find-stations",
+	"repository": "git://github.com/derhuerst/vbb-find-stations.git",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
 	"dependencies": {
-		"vbb-stations-autocomplete": "^2.1.0"
+		"vbb-stations": "^6.1.0",
+		"vbb-stations-autocomplete": "^3.0.0"
 	},
 	"devDependencies": {
 		"tape": "^4.6.3",
 		"tap-min": "^1.2.1"
 	},
 	"scripts": {
-		"test":       "tape test.js | tap-min",
+		"test": "tape test.js | tap-min",
 		"prepublish": "npm test"
 	}
 }
