@@ -22,7 +22,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
-		"vbb-stations": "^6.1.0",
+		"vbb-stations": "^7.0.0",
 		"vbb-stations-autocomplete": "^3.0.0"
 	},
 	"devDependencies": {
