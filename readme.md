@@ -1,13 +1,12 @@
 # vbb-find-stations
 
-*vbb-find-stations* provides a **stations search for the Berlin Brandenburg public transport service (VBB)**.
-
-Originally, [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete) delivered the `n` most relevant stations for a query, whereas this module returned *all* that match the query, even with typos. Now that I rewrote `vbb-stations-autocomplete`, this module is only a wrapper around it.
+**Find stations of Berlin Brandenburg public transport service (VBB).** This module is only a wrapper around [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete).
 
 [![npm version](https://img.shields.io/npm/v/vbb-find-stations.svg)](https://www.npmjs.com/package/vbb-find-stations)
 [![build status](https://img.shields.io/travis/derhuerst/vbb-find-stations.svg)](https://travis-ci.org/derhuerst/vbb-find-stations)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-find-stations.svg)
 [![gitter channel](https://badges.gitter.im/derhuerst/vbb-rest.svg)](https://gitter.im/derhuerst/vbb-rest)
+[![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
 
 
 ## Installing
