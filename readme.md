@@ -21,19 +21,14 @@ npm install vbb-find-stations
 
 ```javascript
 const findStations = require('vbb-find-stations')
+
+console.log(findStations('U Steglitz'))
 ```
 
-This module accepts a filter function (that filters all stations by the first argument) as the second argument. `findStations.exact` and `findStations.fuzzy` are included, with `findStations.exact` being the default one.
-
-```javascript
-findStations('U Steglitz')
-.on('data', console.log)
-```
-
-The stream emits [*Friendly Public Transport Format* 1.0.1](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md) `station`s.
+`findStations` returns [*Friendly Public Transport Format* 1.2.1](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md) `station`s.
 
 ```js
-{
+[ {
 	type: 'station',
 	id: '900000062202',
 	name: 'S+U Rathaus Steglitz (Berlin)',
@@ -45,8 +40,7 @@ The stream emits [*Friendly Public Transport Format* 1.0.1](https://github.com/p
 	weight: 2736,
 	relevance: 3.1185246962418125,
 	score: 43.61687553989209
-}
-{
+}, {
 	type: 'station',
 	id: '900000062781',
 	name: 'S+U Rathaus Steglitz (Berlin) [U9]',
@@ -58,8 +52,7 @@ The stream emits [*Friendly Public Transport Format* 1.0.1](https://github.com/p
 	weight: 2831.5,
 	relevance: 2.4948197569934503,
 	score: 35.294851852317365
-}
-{
+}, {
 	type: 'station',
 	id: '900000062782',
 	name: 'S+U Rathaus Steglitz (Berlin) [Bus Schloßstr.]',
@@ -71,8 +64,7 @@ The stream emits [*Friendly Public Transport Format* 1.0.1](https://github.com/p
 	weight: 4831.25,
 	relevance: 2.0790164641612083,
 	score: 35.14615060514675
-}
-{
+}, {
 	type: 'station',
 	id: '900000062282',
 	name: 'S+U Rathaus Steglitz/Kreisel (Berlin)',
@@ -84,8 +76,7 @@ The stream emits [*Friendly Public Transport Format* 1.0.1](https://github.com/p
 	weight: 2563.75,
 	relevance: 2.4948197569934503,
 	score: 34.14531045766747
-}
-{
+}, {
 	type: 'station',
 	id: '900000062784',
 	name: 'S+U Rathaus Steglitz (Berlin) [Bus Albrechtstr.]',
@@ -97,7 +88,7 @@ The stream emits [*Friendly Public Transport Format* 1.0.1](https://github.com/p
 	weight: 2834,
 	relevance: 2.0790164641612083,
 	score: 29.421030297346405
-}
+} ]
 ```
 
 

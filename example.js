@@ -2,5 +2,4 @@
 
 const findStations = require('.')
 
-findStations('U Steglitz')
-.on('data', console.log)
+console.log(findStations('U Steglitz'))

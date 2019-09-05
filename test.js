@@ -4,23 +4,15 @@ const test = require('tape')
 const find = require('.')
 
 test('find – U Alt-Mareindorf', (t) => {
-	find('U Alt-Mareindorf', find.fuzzy) // note the typo
-	.on('data', (s) => {
-		t.equal(s.type, 'station')
-		if (s.id === '900000070301') {
-			t.pass('match')
-			t.end()
-		}
-	})
+	const res = find('U Alt-Mareindorf', true) // note the typo
+	t.ok(res.every(s => s.type === 'station'))
+	t.ok(res.some(s => s.id === '900000070301'), 'found 900000070301 U Alt-Mariendorf')
+	t.end()
 })
 
 test('find – U mehringdamm', (t) => {
-	find('U mehringdamm', find.exact)
-	.on('data', (s) => {
-		t.equal(s.type, 'station')
-		if (s.id === '900000017101') {
-			t.pass('match')
-			t.end()
-		}
-	})
+	const res = find('U mehringdamm')
+	t.ok(res.every(s => s.type === 'station'))
+	t.ok(res.some(s => s.id === '900000017101'), 'found 900000017101 U Mehringdamm')
+	t.end()
 })
