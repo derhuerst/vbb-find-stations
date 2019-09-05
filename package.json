@@ -19,15 +19,15 @@
 	"repository": "git://github.com/derhuerst/vbb-find-stations.git",
 	"license": "ISC",
 	"engines": {
-		"node": ">=6"
+		"node": ">=8"
 	},
 	"dependencies": {
-		"vbb-stations": "^6.1.0",
-		"vbb-stations-autocomplete": "^3.0.0"
+		"vbb-stations-autocomplete": "^4.0.0"
 	},
 	"devDependencies": {
+		"tap-min": "^2.0.0",
 		"tape": "^4.6.3",
-		"tap-min": "^1.2.1"
+		"vbb-stations": "^7.0.0"
 	},
 	"scripts": {
 		"test": "tape test.js | tap-min",
