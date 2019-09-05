@@ -1,7 +1,7 @@
 {
 	"name": "vbb-find-stations",
 	"description": "Search for stations of VBB.",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"main": "index.js",
 	"files": [
 		"index.js"
@@ -22,12 +22,12 @@
 		"node": ">=8"
 	},
 	"dependencies": {
+		"vbb-stations": "^7.0.0",
 		"vbb-stations-autocomplete": "^4.0.0"
 	},
 	"devDependencies": {
 		"tap-min": "^2.0.0",
-		"tape": "^4.6.3",
-		"vbb-stations": "^7.0.0"
+		"tape": "^4.6.3"
 	},
 	"scripts": {
 		"test": "tape test.js | tap-min",
